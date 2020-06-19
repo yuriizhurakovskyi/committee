@@ -7,5 +7,5 @@ import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
 
 @Repository
 public interface FacultyRepository extends JpaRepository<Faculty, Integer> {
-	void update(Faculty faculty);
+	//void update(Faculty faculty);
 }

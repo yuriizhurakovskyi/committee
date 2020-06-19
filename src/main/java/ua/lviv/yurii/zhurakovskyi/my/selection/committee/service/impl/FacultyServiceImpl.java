@@ -7,6 +7,7 @@ import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.FacultyService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
@@ -26,6 +27,10 @@ public class FacultyServiceImpl implements FacultyService {
 	@Override
 	public List<Faculty> getAllFaculties() {
 		return facultyRepository.findAll();
+	}
+
+	public Optional<Faculty> find(Integer facultyId) {
+		return facultyRepository.findById(facultyId);
 	}
 
 }

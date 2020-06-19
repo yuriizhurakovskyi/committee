@@ -1,5 +1,6 @@
 package ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,22 +20,53 @@ public class ApplicationInfo {
 	@JoinColumn(name = "applicant_id")
 	private User applicant;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "certificate_id")
-	private Certificate certificate;
-	
+	@JoinColumn(name = "faculty_id")
+	private Faculty faculty;
+	@Column
+	private Integer score;
+	@Column
+	private String schoolName;
 
 	public ApplicationInfo() {
 	}
 
-	public ApplicationInfo(User applicant, Certificate certificate) {
+	public ApplicationInfo(User applicant, Faculty faculty, Integer score, String schoolName) {
 		this.applicant = applicant;
-		this.certificate = certificate;
+		this.faculty = faculty;
+		this.score = score;
+		this.schoolName = schoolName;
 	}
 
-	public ApplicationInfo(Integer id, User applicant, Certificate certificate) {
+	public ApplicationInfo(Integer id, User applicant, Faculty faculty, Integer score, String schoolName) {
 		this.id = id;
 		this.applicant = applicant;
-		this.certificate = certificate;
+		this.faculty = faculty;
+		this.score = score;
+		this.schoolName = schoolName;
+	}
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
+	public String getSchoolName() {
+		return schoolName;
+	}
+
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
 	}
 
 	public Integer getId() {
@@ -53,21 +85,15 @@ public class ApplicationInfo {
 		this.applicant = applicant;
 	}
 
-	public Certificate getCertificate() {
-		return certificate;
-	}
-
-	public void setCertificate(Certificate certificate) {
-		this.certificate = certificate;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((applicant == null) ? 0 : applicant.hashCode());
-		result = prime * result + ((certificate == null) ? 0 : certificate.hashCode());
+		result = prime * result + ((faculty == null) ? 0 : faculty.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((schoolName == null) ? 0 : schoolName.hashCode());
+		result = prime * result + ((score == null) ? 0 : score.hashCode());
 		return result;
 	}
 
@@ -85,22 +111,33 @@ public class ApplicationInfo {
 				return false;
 		} else if (!applicant.equals(other.applicant))
 			return false;
-		if (certificate == null) {
-			if (other.certificate != null)
+		if (faculty == null) {
+			if (other.faculty != null)
 				return false;
-		} else if (!certificate.equals(other.certificate))
+		} else if (!faculty.equals(other.faculty))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (schoolName == null) {
+			if (other.schoolName != null)
+				return false;
+		} else if (!schoolName.equals(other.schoolName))
+			return false;
+		if (score == null) {
+			if (other.score != null)
+				return false;
+		} else if (!score.equals(other.score))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "ApplicationInfo [id=" + id + ", applicant=" + applicant + ", certificate=" + certificate + "]";
+		return "ApplicationInfo [id=" + id + ", applicant=" + applicant + ", faculty=" + faculty + ", score=" + score
+				+ ", schoolName=" + schoolName + "]";
 	}
 
 }

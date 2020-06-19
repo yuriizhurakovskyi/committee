@@ -92,24 +92,27 @@
 			<h1>Hello: ${userLogged}</h1>
 			<h1>Applying for faculty place</h1>
 			<h2>Faculty name: ${faculty.name}</h2>
-			<form:form mathod="POST" action="${contextPath}/apply"
+			<form:form method="POST" action="${contextPath}/apply/${faculty.id}"
 				modelAttribute="apply">
-				<h2 class="mb-4">User name: ${user.name}</h2>
+				<h2 class="mb-4">User name: ${userLogged}</h2>
 				<div class="form-group">
-					<form:label for="score">Certificate score: </form:label>
-					<form:input type="number" class="form-control score" id="capacity"
-						aria-describedby="score" placeholder="Enter a certificate score"
-						name="capacity" min="1" max="100" />
+					<form:label for="score" path="score">Certificate score: </form:label>
+					<form:input type="number" path="score" class="form-control score"
+						id="capacity" aria-describedby="score"
+						placeholder="Enter a certificate score" name="capacity" min="1"
+						max="100" />
 				</div>
 				<div class="form-group">
-					<form:label for="schoolName">School name: </form:label>
-					<form:input type="text" class="form-control schoolName"
-						id="schoolName" aria-describedby="schoolName"
-						placeholder="Enter a school name" name="schoolName" />
+					<form:label for="schoolName" path="schoolName">School name: </form:label>
+					<form:input type="text" path="schoolName"
+						class="form-control schoolName" id="schoolName"
+						aria-describedby="schoolName" placeholder="Enter a school name"
+						name="schoolName" />
 				</div>
 				<button type="submit" class="btn btn-primary btn-lg apply"
 					id="apply">Apply</button>
 			</form:form>
+
 			<h1>Log out:</h1>
 			<form action="<c:url value="/logout"/>" method="POST">
 				<input type="submit" value="Log out" name="">

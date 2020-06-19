@@ -60,9 +60,4 @@ public class UserController {
         System.out.println(facultyService.getAllFaculties());
         return modelAndView;
     }
-
-    @GetMapping("/apply")
-    public String applyEntrant(Model model) {
-        return "home";
-    }
 }
