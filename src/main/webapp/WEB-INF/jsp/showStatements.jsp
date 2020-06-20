@@ -107,6 +107,30 @@
                 </tbody>
             </table>
         </c:if>
+        <c:if test="${not empty successful_statements}">
+            <h3 style="margin: 30px; text-align: center">Statements of enrolled students</h3>
+            <table class="table table-dark" style="background-color: green">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Faculty name</th>
+                    <th scope="col">Entrant</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:set var="numb1" scope="session" value="${0}"/>
+                <c:forEach items="${successful_statements}" var="successful_statement">
+                    <tr>
+                        <th scope="row"><c:out value="${numb1 = 1 + numb1}"/></th>
+                        <td>${successful_statement.faculty.name}</td>
+                        <td>${successful_statement.name}</td>
+                        <td>${successful_statement.score}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 </div>
 

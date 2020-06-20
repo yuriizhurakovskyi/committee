@@ -3,7 +3,6 @@ package ua.lviv.yurii.zhurakovskyi.my.selection.committee.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,10 +47,12 @@ public class ApplicationInfoController {
                                @RequestParam String schoolName,
                                @PathVariable(name = "facultyId") Integer facultyId) throws IOException {
         Faculty faculty = facultyService.find(facultyId).get();
-        faculty.setNumberOfStudents(faculty.getNumberOfStudents() - 1);
-        facultyService.updateNumberOfStudents(faculty);
-        ApplicationInfo applicationInfo = ApplicationInfoDTOHelper.createEntity(image, firstName, lastName, age, score, schoolName, faculty);
-        applicationInfoService.save(applicationInfo);
+        if (faculty.getMaxNumberOfCandidates() - 1 >= 0) {
+            faculty.setMaxNumberOfCandidates(faculty.getMaxNumberOfCandidates() - 1);
+            facultyService.updateMaxNumberOfCandidates(faculty);
+            ApplicationInfo applicationInfo = ApplicationInfoDTOHelper.createEntity(image, firstName, lastName, age, score, schoolName, faculty);
+            applicationInfoService.save(applicationInfo);
+        }
         return "redirect:/home";
     }
 }

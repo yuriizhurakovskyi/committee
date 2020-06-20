@@ -12,5 +12,5 @@ public interface FacultyService {
 
     Optional<Faculty> find(Integer facultyId);
 
-    void updateNumberOfStudents(Faculty faculty);
+    void updateMaxNumberOfCandidates(Faculty faculty);
 }

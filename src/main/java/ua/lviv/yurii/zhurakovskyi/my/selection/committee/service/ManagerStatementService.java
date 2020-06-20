@@ -8,4 +8,6 @@ public interface ManagerStatementService {
     void save(ManagerStatement statement);
 
     List<ManagerStatement> getAllManagerStatements();
+
+    List<ManagerStatement> findSuccessStatements();
 }

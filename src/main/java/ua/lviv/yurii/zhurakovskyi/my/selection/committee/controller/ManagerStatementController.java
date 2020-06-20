@@ -36,7 +36,7 @@ public class ManagerStatementController {
         managerStatementService.save(managerStatement);
         model.addAttribute("managerStatements", managerStatementService.getAllManagerStatements());
         applicationInfoService.delete(applicationInfo.getId());
-        return "showAllEntrants";
+        return "redirect:/showAllEntrants";
     }
 
     @GetMapping("/showStatements")
@@ -46,6 +46,10 @@ public class ManagerStatementController {
                 .thenComparing(ManagerStatement::getScore)).descendingSet();
         managerStatements.addAll(managerStatementService.getAllManagerStatements());
         model.addAttribute("statements", managerStatements);
+        Set<ManagerStatement> successfulStatements = new TreeSet<>(Comparator.comparing(ManagerStatement::getFacultyName)
+                .thenComparing(ManagerStatement::getScore)).descendingSet();
+        successfulStatements.addAll(managerStatementService.findSuccessStatements());
+        model.addAttribute("successful_statements", successfulStatements);
         return "showStatements";
     }
 }

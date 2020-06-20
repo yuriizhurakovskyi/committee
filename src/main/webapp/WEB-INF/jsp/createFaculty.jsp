@@ -91,9 +91,17 @@
                             placeholder="Name of Faculty"/>
             </div>
             <div class="form-group">
-                <form:label for="exampleFormControlInput1" path="numberOfStudents">Number of students</form:label>
+                <form:label for="exampleFormControlInput1"
+                            path="maxNumberOfCandidates">Max number of candidates</form:label>
                 <form:input type="number" min="20" max="200" class="form-control"
-                            id="exampleFormControlInput1" path="numberOfStudents"
+                            id="maxNumberOfCandidates" path="maxNumberOfCandidates"
+                            placeholder=""/>
+            </div>
+            <div class="form-group">
+                <form:label for="exampleFormControlInput1"
+                            path="countOfStudents">Count of students</form:label>
+                <form:input type="number" min="1" max="20" class="form-control"
+                            id="countOfStudents" path="countOfStudents"
                             placeholder=""/>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -12,7 +12,9 @@ public class Faculty {
     @Column
     private String name;
     @Column
-    private Integer numberOfStudents;
+    private Integer maxNumberOfCandidates;
+    @Column
+    private Integer countOfStudents;
     @OneToMany(mappedBy = "faculty")
     private List<ApplicationInfo> applicationInfos;
     @OneToMany(mappedBy = "faculty")
@@ -21,15 +23,25 @@ public class Faculty {
     public Faculty() {
     }
 
-    public Faculty(String name, Integer numberOfStudents) {
+    public Faculty(String name, Integer maxNumberOfCandidates, Integer countOfStudents) {
         this.name = name;
-        this.numberOfStudents = numberOfStudents;
+        this.maxNumberOfCandidates = maxNumberOfCandidates;
+        this.countOfStudents = countOfStudents;
     }
 
-    public Faculty(Integer id, String name, Integer numberOfStudents) {
+    public Faculty(Integer id, String name, Integer maxNumberOfCandidates, Integer countOfStudents) {
         this.id = id;
         this.name = name;
-        this.numberOfStudents = numberOfStudents;
+        this.maxNumberOfCandidates = maxNumberOfCandidates;
+        this.countOfStudents = countOfStudents;
+    }
+
+    public Integer getCountOfStudents() {
+        return countOfStudents;
+    }
+
+    public void setCountOfStudents(Integer countOfStudents) {
+        this.countOfStudents = countOfStudents;
     }
 
     public List<ManagerStatement> getManagerStatements() {
@@ -48,12 +60,12 @@ public class Faculty {
         this.applicationInfos = applicationInfos;
     }
 
-    public Integer getNumberOfStudents() {
-        return numberOfStudents;
+    public Integer getMaxNumberOfCandidates() {
+        return maxNumberOfCandidates;
     }
 
-    public void setNumberOfStudents(Integer numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
+    public void setMaxNumberOfCandidates(Integer maxNumberOfCandidates) {
+        this.maxNumberOfCandidates = maxNumberOfCandidates;
     }
 
     public Integer getId() {
@@ -78,7 +90,7 @@ public class Faculty {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((numberOfStudents == null) ? 0 : numberOfStudents.hashCode());
+        result = prime * result + ((maxNumberOfCandidates == null) ? 0 : maxNumberOfCandidates.hashCode());
         return result;
     }
 
@@ -101,17 +113,17 @@ public class Faculty {
                 return false;
         } else if (!name.equals(other.name))
             return false;
-        if (numberOfStudents == null) {
-            if (other.numberOfStudents != null)
+        if (maxNumberOfCandidates == null) {
+            if (other.maxNumberOfCandidates != null)
                 return false;
-        } else if (!numberOfStudents.equals(other.numberOfStudents))
+        } else if (!maxNumberOfCandidates.equals(other.maxNumberOfCandidates))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Faculty [id=" + id + ", name=" + name + ", numberOfStudents=" + numberOfStudents + "]";
+        return "Faculty [id=" + id + ", name=" + name + ", numberOfStudents=" + maxNumberOfCandidates + "]";
     }
 
 }
