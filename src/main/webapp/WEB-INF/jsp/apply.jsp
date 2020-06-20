@@ -20,26 +20,11 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="#homeSubmenu"
-                                      data-toggle="collapse" aria-expanded="false"
-                                      class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li><a href="#">Home 1</a></li>
-                        <li><a href="#">Home 2</a></li>
-                        <li><a href="#">Home 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">About</a></li>
-                <li><a href="#pageSubmenu" data-toggle="collapse"
-                       aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/createFaculty">Create Faculty</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/home">Show all faculties</a></li>
+                <li><a href="${pageContext.request.contextPath}/showAllEntrants">Show all entrants</a></li>
+                <li><a href="${pageContext.request.contextPath}/showStatements">Statements</a></li>
             </ul>
 
             <div class="footer">
@@ -82,11 +67,16 @@
                         <li class="nav-item active"><a class="nav-link" href="home">Home</a>
                         </li>
                         <li class="nav-item"><a class="nav-link"
-                                                href="createFaculty">Create Faculty</a></li>
-                        <li class="nav-item"><a class="nav-link" href="home">Show
+                                                href="${pageContext.request.contextPath}/createFaculty">Create
+                            Faculty</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Show
                             all faculties</a></li>
-                        <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}/showAllEntrants">Show
                             all entrants</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                href="${pageContext.request.contextPath}/showStatements">Statements</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
                                onclick="document.getElementById('myForm').submit();">Logout</a>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoService;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
 
@@ -16,7 +17,7 @@ public class EntrantController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/showAllEntrants")
+    @RequestMapping("/showAllEntrants")
     public String welcome(Model model, Principal principal) {
         model.addAttribute("entrants", applicationInfoService.getAllApplicationInfos());
         System.out.println(applicationInfoService.getAllApplicationInfos());

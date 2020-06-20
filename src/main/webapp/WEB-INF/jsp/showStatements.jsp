@@ -1,10 +1,11 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
+<html lang="en">
 <head>
-    <title>Welcome page</title>
+    <title>Manager Statement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link
@@ -21,10 +22,10 @@
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
                 <li><a href="home">Home</a></li>
-                <li class="active"><a href="createFaculty">Create Faculty</a></li>
+                <li><a href="createFaculty">Create Faculty</a></li>
                 <li><a href="home">Show all faculties</a></li>
                 <li><a href="showAllEntrants">Show all entrants</a></li>
-                <li><a href="showStatements">Statements</a></li>
+                <li class="active"><a href="showStatements">Statements</a></li>
             </ul>
 
             <div class="footer">
@@ -61,10 +62,9 @@
                         aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
+                        <li class="nav-item active"><a class="nav-link" href="home">Home</a>
                         </li>
                         <li class="nav-item"><a class="nav-link"
                                                 href="createFaculty">Create Faculty</a></li>
@@ -77,29 +77,39 @@
                             <a class="nav-link" style="cursor: pointer"
                                onclick="document.getElementById('myForm').submit();">Logout</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
-        <h1>Hello: ${user.firstName}</h1>
-        <h1>Create new Faculty</h1>
-        <form:form mathod="POST" action="${contextPath}/createFaculty"
-                   modelAttribute="faculty">
-            <div class="form-group">
-                <form:label for="name" path="name">Name of Faculty</form:label>
-                <form:input type="text" path="name" class="form-control" id="name"
-                            placeholder="Name of Faculty"/>
-            </div>
-            <div class="form-group">
-                <form:label for="exampleFormControlInput1" path="numberOfStudents">Number of students</form:label>
-                <form:input type="number" min="20" max="200" class="form-control"
-                            id="exampleFormControlInput1" path="numberOfStudents"
-                            placeholder=""/>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form:form>
+        <h4>Hello: ${user.firstName}</h4>
+        <c:if test="${not empty statements}">
+            <h3 style="margin: 30px; text-align: center">Statements</h3>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Faculty name</th>
+                    <th scope="col">Entrant</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:set var="numb" scope="session" value="${0}"/>
+                <c:forEach items="${statements}" var="statement">
+                    <tr>
+                        <th scope="row"><c:out value="${numb = 1 + numb}"/></th>
+                        <td>${statement.faculty.name}</td>
+                        <td>${statement.name}</td>
+                        <td>${statement.score}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 </div>
+
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/popper.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
