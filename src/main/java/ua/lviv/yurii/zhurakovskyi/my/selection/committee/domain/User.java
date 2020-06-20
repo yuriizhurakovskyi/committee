@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "user")
 @Inheritance
@@ -17,11 +18,15 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(unique = true)
-    private String username;
-    private String password;
     @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private Integer age;
+    @Column(unique = true, nullable = false)
     private String email;
+    private String password;
     private boolean accountNonExpired = true;
     private boolean credentialsNonExpired = true;
     private boolean enabled = true;
@@ -29,18 +34,46 @@ public class User implements UserDetails {
     private Role role = Role.ROLE_USER;
     private boolean accountNonLocked = true;
 
-    @Override
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return getEmail();
     }
 
     public String getEmail() {
@@ -99,51 +132,32 @@ public class User implements UserDetails {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + id;
-        result = prime * result + ((password == null) ? 0 : password.hashCode());
-        result = prime * result + ((role == null) ? 0 : role.hashCode());
-        result = prime * result + ((username == null) ? 0 : username.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return firstName.equals(user.firstName) &&
+                lastName.equals(user.lastName) &&
+                age.equals(user.age) &&
+                email.equals(user.email) &&
+                password.equals(user.password);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        User other = (User) obj;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (id != other.id)
-            return false;
-        if (password == null) {
-            if (other.password != null)
-                return false;
-        } else if (!password.equals(other.password))
-            return false;
-        if (role != other.role)
-            return false;
-        if (username == null) {
-            if (other.username != null)
-                return false;
-        } else if (!username.equals(other.username))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, age, email, password);
     }
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", email=" + email + ", role=" + role + "]";
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
     }
-
 }

@@ -96,25 +96,23 @@
             </div>
         </nav>
         <h1>Hello: ${userLogged}</h1>
-        <c:if test="${not empty faculties}">
+        <c:if test="${not empty entrants}">
             <div class="w3-container">
-                <h2>All Faculties</h2>
-                <c:forEach items="${faculties}" var="faculty">
+                <h3 style="margin: 30px; text-align: center" >All Entrants</h3>
+                <c:forEach items="${entrants}" var="entrant">
                     <div class="w3-card-4" style="width: 70%">
                         <header class="w3-container w3-light-grey">
-                            <h3>Faculty name: ${faculty.name}</h3>
+                            <h3>Entrant name: ${entrant.firstName} ${entrant.lastName}</h3>
                         </header>
                         <div class="w3-container">
-                            <p>Number of free places: ${faculty.numberOfStudents}</p>
-                            <hr>
-                            <img src="${pageContext.request.contextPath}/images/faculty.png"
-                                 alt="Avatar" class="w3-left w3-circle w3-margin-right"
-                                 style="width: 60px">
-                            <p>Number of free places: ${faculty.numberOfStudents}</p>
+                            <h3>Age: ${entrant.age}</h3>
                             <br>
+                            <h3>School: ${entrant.schoolName}</h3>
+                            <br>
+                            <h3>Score: ${entrant.score}</h3>
+                            <br>
+                            <h3>Faculty: ${entrant.faculty.name}</h3>
                         </div>
-                        <!-- ${faculty.id} -->
-                        <a href="/apply/${faculty.id}" class="w3-button w3-block w3-dark-grey">Apply</a>
                     </div>
                     <br>
                     <br>

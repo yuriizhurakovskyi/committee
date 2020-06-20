@@ -33,4 +33,9 @@ public class FacultyServiceImpl implements FacultyService {
 		return facultyRepository.findById(facultyId);
 	}
 
+	@Override
+	public void updateNumberOfStudents(Faculty faculty) {
+		facultyRepository.updateNumberOfStudents(faculty.getNumberOfStudents(), faculty.getId());
+	}
+
 }

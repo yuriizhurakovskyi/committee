@@ -100,15 +100,18 @@
 								<h3>Faculty name: ${faculty.name}</h3>
 							</header>
 							<div class="w3-container">
-								<p>Number of free places${faculty.numberOfStudents}</p>
+								<p>Number of free places: ${faculty.numberOfStudents}</p>
 								<hr>
 								<img src="${pageContext.request.contextPath}/images/faculty.png"
 									alt="Avatar" class="w3-left w3-circle w3-margin-right"
 									style="width: 60px">
-								<p>Number of free places${faculty.numberOfStudents}</p>
+								<p>Number of free places: ${faculty.numberOfStudents}</p>
 								<br>
 							</div>
-							<button class="w3-button w3-block w3-dark-grey">Apply</button>
+							<!-- ${faculty.id} -->
+
+							<a href="/apply/${faculty.id}" class="w3-button w3-block w3-dark-grey">Apply</a>
+
 						</div>
 						<br>
 						<br>

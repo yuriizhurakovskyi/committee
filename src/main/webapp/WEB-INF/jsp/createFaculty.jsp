@@ -62,7 +62,7 @@
 
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-
+					<form id="myForm" action="<c:url value="/logout"/>" method="POST"></form>
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 						<i class="fa fa-bars"></i> <span class="sr-only">Toggle
 							Menu</span>
@@ -77,14 +77,17 @@
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="home">Home</a>
+							<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="createFaculty">Create Faculty</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Show
+							<li class="nav-item"><a class="nav-link" href="home">Show
 									all faculties</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Show
+							<li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
 									all entrants</a></li>
+							<li class="nav-item">
+								<a class="nav-link" style="cursor: pointer" onclick="document.getElementById('myForm').submit();">Logout</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -106,11 +109,6 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form:form>
-			<h1>Log out:</h1>
-			<form action="<c:url value="/logout"/>" method="POST">
-				<input type="submit" value="Log out" name="">
-			</form>
-
 		</div>
 	</div>
 

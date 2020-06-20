@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FacultyService {
-	void save(Faculty faculty);
+    void save(Faculty faculty);
 
-	List<Faculty> getAllFaculties();
+    List<Faculty> getAllFaculties();
 
-	Optional<Faculty> find(Integer facultyId);
+    Optional<Faculty> find(Integer facultyId);
+
+    void updateNumberOfStudents(Faculty faculty);
 }

@@ -1,143 +1,117 @@
 package ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "application_info")
 public class ApplicationInfo {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "applicant_id")
-	private User applicant;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "faculty_id")
-	private Faculty faculty;
-	@Column
-	private Integer score;
-	@Column
-	private String schoolName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
+    @Column
+    private Integer score;
+    @Column
+    private String schoolName;
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private Integer age;
 
-	public ApplicationInfo() {
-	}
+    public ApplicationInfo() {
+    }
 
-	public ApplicationInfo(User applicant, Faculty faculty, Integer score, String schoolName) {
-		this.applicant = applicant;
-		this.faculty = faculty;
-		this.score = score;
-		this.schoolName = schoolName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public ApplicationInfo(Integer id, User applicant, Faculty faculty, Integer score, String schoolName) {
-		this.id = id;
-		this.applicant = applicant;
-		this.faculty = faculty;
-		this.score = score;
-		this.schoolName = schoolName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public Integer getScore() {
-		return score;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setScore(Integer score) {
-		this.score = score;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getSchoolName() {
-		return schoolName;
-	}
+    public Integer getScore() {
+        return score;
+    }
 
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
+    public void setScore(Integer score) {
+        this.score = score;
+    }
 
-	public Faculty getFaculty() {
-		return faculty;
-	}
+    public String getSchoolName() {
+        return schoolName;
+    }
 
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
-	}
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Faculty getFaculty() {
+        return faculty;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
 
-	public User getApplicant() {
-		return applicant;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setApplicant(User applicant) {
-		this.applicant = applicant;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((applicant == null) ? 0 : applicant.hashCode());
-		result = prime * result + ((faculty == null) ? 0 : faculty.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((schoolName == null) ? 0 : schoolName.hashCode());
-		result = prime * result + ((score == null) ? 0 : score.hashCode());
-		return result;
-	}
+    public Integer getAge() {
+        return age;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ApplicationInfo other = (ApplicationInfo) obj;
-		if (applicant == null) {
-			if (other.applicant != null)
-				return false;
-		} else if (!applicant.equals(other.applicant))
-			return false;
-		if (faculty == null) {
-			if (other.faculty != null)
-				return false;
-		} else if (!faculty.equals(other.faculty))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (schoolName == null) {
-			if (other.schoolName != null)
-				return false;
-		} else if (!schoolName.equals(other.schoolName))
-			return false;
-		if (score == null) {
-			if (other.score != null)
-				return false;
-		} else if (!score.equals(other.score))
-			return false;
-		return true;
-	}
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
-	@Override
-	public String toString() {
-		return "ApplicationInfo [id=" + id + ", applicant=" + applicant + ", faculty=" + faculty + ", score=" + score
-				+ ", schoolName=" + schoolName + "]";
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ApplicationInfo that = (ApplicationInfo) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(faculty, that.faculty) &&
+                Objects.equals(score, that.score) &&
+                Objects.equals(schoolName, that.schoolName) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(age, that.age);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, faculty, score, schoolName, firstName, lastName, age);
+    }
+
+    @Override
+    public String toString() {
+        return "ApplicationInfo{" +
+                "id=" + id +
+                ", faculty=" + faculty +
+                ", score=" + score +
+                ", schoolName='" + schoolName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

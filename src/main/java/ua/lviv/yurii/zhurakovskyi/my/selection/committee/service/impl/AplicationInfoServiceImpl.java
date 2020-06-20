@@ -21,6 +21,7 @@ public class AplicationInfoServiceImpl implements ApplicationInfoService {
 	@Override
 	public void save(ApplicationInfo applicationInfo) {
 		if (applicationInfo != null) {
+			repository.save(applicationInfo);
 		}
 	}
 

@@ -62,7 +62,7 @@
 
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-					<form id="myForm" action="<c:url value="/logout"/>" method="POST"></form>
+
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 						<i class="fa fa-bars"></i> <span class="sr-only">Toggle
 							Menu</span>
@@ -77,47 +77,24 @@
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
+							<li class="nav-item active"><a class="nav-link" href="home">Home</a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="createFaculty">Create Faculty</a></li>
-							<li class="nav-item"><a class="nav-link" href="home">Show
+							<li class="nav-item"><a class="nav-link" href="#">Show
 									all faculties</a></li>
-							<li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
+							<li class="nav-item"><a class="nav-link" href="#">Show
 									all entrants</a></li>
-							<li class="nav-item">
-								<a class="nav-link" style="cursor: pointer" onclick="document.getElementById('myForm').submit();">Logout</a>
-							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
-			<h4>Hello ${user.firstName}</h4>
-			<h2 style="text-align: center">Applying for faculty place</h2>
-			<h2 class="mb-4">Faculty name: ${faculty.name}</h2>
+			<h1>Hello: ${userLogged}</h1>
+			<h1>Applying for faculty place</h1>
+			<h2>Faculty name: ${faculty.name}</h2>
 			<form:form method="POST" action="${contextPath}/apply/${faculty.id}"
 				modelAttribute="applicationInfo">
-				<div class="form-group">
-					<form:label for="firstName" path="firstName">First name: </form:label>
-					<form:input type="text" path="firstName"
-								class="form-control firstName" id="firstName"
-								aria-describedby="firstName" value="${user.firstName}"
-								name="firstName" />
-				</div>
-				<div class="form-group">
-					<form:label for="lastName" path="lastName">Last name: </form:label>
-					<form:input type="text" path="lastName"
-								class="form-control lastName" id="lastName"
-								aria-describedby="lastName" value="${user.lastName}"
-								name="lastName" />
-				</div>
-				<div class="form-group">
-					<form:label for="age" path="age">Age: </form:label>
-					<form:input type="number" path="age"
-								class="form-control age" id="age"
-								aria-describedby="age"
-								name="age" min="16" max="100" value="${user.age}"/>
-				</div>
+				<h2 class="mb-4">User name: ${userLogged}</h2>
 				<div class="form-group">
 					<form:label for="score" path="score">Certificate score: </form:label>
 					<form:input type="number" path="score" class="form-control score"
@@ -135,6 +112,12 @@
 				<button type="submit" class="btn btn-primary btn-lg apply"
 					id="apply">Apply</button>
 			</form:form>
+
+			<h1>Log out:</h1>
+			<form action="<c:url value="/logout"/>" method="POST">
+				<input type="submit" value="Log out" name="">
+			</form>
+
 		</div>
 	</div>
 
