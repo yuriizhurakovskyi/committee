@@ -4,22 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.multipart.MultipartFile;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ApplicationInfo;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.User;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoDTOHelper;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoService;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.FacultyService;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.AplicationInfoServiceImpl;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.FacultyServiceImpl;
 
+import java.io.IOException;
 import java.security.Principal;
-import java.util.Optional;
 
 @Controller
 public class ApplicationInfoController {
@@ -41,11 +38,17 @@ public class ApplicationInfoController {
     }
 
     @PostMapping("/apply/{facultyId}")
-    public String applyEntrant(@ModelAttribute ApplicationInfo applicationInfo, BindingResult bindingResult, @PathVariable(name = "facultyId") Integer facultyId, Principal principal) {
+    public String applyEntrant(@RequestParam MultipartFile image,
+                               @RequestParam String firstName,
+                               @RequestParam String lastName,
+                               @RequestParam Integer age,
+                               @RequestParam Integer score,
+                               @RequestParam String schoolName,
+                               @PathVariable(name = "facultyId") Integer facultyId) throws IOException {
         Faculty faculty = facultyService.find(facultyId).get();
         faculty.setNumberOfStudents(faculty.getNumberOfStudents() - 1);
         facultyService.updateNumberOfStudents(faculty);
-        applicationInfo.setFaculty(faculty);
+        ApplicationInfo applicationInfo = ApplicationInfoDTOHelper.createEntity(image, firstName, lastName, age, score, schoolName, faculty);
         applicationInfoService.save(applicationInfo);
         return "redirect:/home";
     }
