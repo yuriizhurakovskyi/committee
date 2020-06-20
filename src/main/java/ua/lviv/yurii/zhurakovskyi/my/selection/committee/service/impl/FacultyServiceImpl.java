@@ -34,8 +34,8 @@ public class FacultyServiceImpl implements FacultyService {
 	}
 
 	@Override
-	public void updateNumberOfStudents(Faculty faculty) {
-		facultyRepository.updateNumberOfStudents(faculty.getNumberOfStudents(), faculty.getId());
+	public void updateMaxNumberOfCandidates(Faculty faculty) {
+		facultyRepository.updateMaxNumberOfCandidates(faculty.getMaxNumberOfCandidates(), faculty.getId());
 	}
 
 }

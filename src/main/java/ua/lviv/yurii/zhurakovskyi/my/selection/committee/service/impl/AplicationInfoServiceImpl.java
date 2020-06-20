@@ -11,23 +11,32 @@ import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfo
 
 @Service
 public class AplicationInfoServiceImpl implements ApplicationInfoService {
-	private final ApplicationInfoRepository repository;
+    private final ApplicationInfoRepository repository;
 
-	@Autowired
-	public AplicationInfoServiceImpl(ApplicationInfoRepository repository) {
-		this.repository = repository;
-	}
+    @Autowired
+    public AplicationInfoServiceImpl(ApplicationInfoRepository repository) {
+        this.repository = repository;
+    }
 
-	@Override
-	public void save(ApplicationInfo applicationInfo) {
-		if (applicationInfo != null) {
-			repository.save(applicationInfo);
-		}
-	}
+    @Override
+    public void save(ApplicationInfo applicationInfo) {
+        if (applicationInfo != null) {
+            repository.save(applicationInfo);
+        }
+    }
 
-	@Override
-	public List<ApplicationInfo> getAllApplicationInfos() {
-		return repository.findAll();
-	}
+    @Override
+    public List<ApplicationInfo> getAllApplicationInfos() {
+        return repository.findAll();
+    }
 
+    @Override
+    public ApplicationInfo find(Integer applicationInfoId) {
+        return repository.findById(applicationInfoId).orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Override
+    public void delete(Integer applicationInfoId) {
+        repository.delete(applicationInfoId);
+    }
 }

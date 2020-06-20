@@ -8,4 +8,8 @@ public interface ApplicationInfoService {
 	void save(ApplicationInfo applicationInfo);
 
 	List<ApplicationInfo> getAllApplicationInfos();
+
+    ApplicationInfo find(Integer applicationInfoId);
+
+	void delete(Integer applicationInfoId);
 }
