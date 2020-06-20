@@ -61,7 +61,7 @@ public class UserController {
             User userLogged = (User) userService.findUserByEmail(username);
             model.addAttribute("user", userLogged);
         }
-        return "home";
+        return "redirect:/home";
     }
 
     @GetMapping("/home")

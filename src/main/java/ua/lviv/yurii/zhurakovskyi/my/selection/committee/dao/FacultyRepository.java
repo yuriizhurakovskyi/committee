@@ -12,6 +12,6 @@ import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
 public interface FacultyRepository extends JpaRepository<Faculty, Integer> {
     @Transactional
     @Modifying
-    @Query("update Faculty f set f.numberOfStudents = ?1 where f.id = ?2")
-    void updateNumberOfStudents(Integer numberOfStudents, Integer facultyId);
+    @Query("update Faculty f set f.maxNumberOfCandidates = ?1 where f.id = ?2")
+    void updateMaxNumberOfCandidates(Integer maxNumberOfCandidates, Integer facultyId);
 }

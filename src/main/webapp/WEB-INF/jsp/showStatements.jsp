@@ -1,10 +1,11 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
+<html lang="en">
 <head>
-    <title>Applying for faculty place</title>
+    <title>Manager Statement</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link
@@ -20,11 +21,11 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-                <li><a href="${pageContext.request.contextPath}/createFaculty">Create Faculty</a></li>
-                <li class="active"><a href="${pageContext.request.contextPath}/home">Show all faculties</a></li>
-                <li><a href="${pageContext.request.contextPath}/showAllEntrants">Show all entrants</a></li>
-                <li><a href="${pageContext.request.contextPath}/showStatements">Statements</a></li>
+                <li><a href="home">Home</a></li>
+                <li><a href="createFaculty">Create Faculty</a></li>
+                <li><a href="home">Show all faculties</a></li>
+                <li><a href="showAllEntrants">Show all entrants</a></li>
+                <li class="active"><a href="showStatements">Statements</a></li>
             </ul>
 
             <div class="footer">
@@ -61,79 +62,75 @@
                         aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="home">Home</a>
                         </li>
                         <li class="nav-item"><a class="nav-link"
-                                                href="${pageContext.request.contextPath}/createFaculty">Create
-                            Faculty</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Show
+                                                href="createFaculty">Create Faculty</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home">Show
                             all faculties</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                                href="${pageContext.request.contextPath}/showAllEntrants">Show
+                        <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
                             all entrants</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                                href="${pageContext.request.contextPath}/showStatements">Statements</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
                                onclick="document.getElementById('myForm').submit();">Logout</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
-        <h4>Hello ${user.firstName}</h4>
-        <h2 style="text-align: center">Applying for faculty place</h2>
-        <h2 class="mb-4">Faculty name: ${faculty.name}</h2>
-        <form:form method="POST" action="${contextPath}/apply/${faculty.id}" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="image">Select an image: </label>
-                <input type="file" id="image"
-                       aria-describedby="image"
-                       name="image"/>
-            </div>
-            <div class="form-group">
-                <label for="firstName">First name: </label>
-                <input type="text"
-                       class="form-control firstName" id="firstName"
-                       aria-describedby="firstName" value="${user.firstName}"
-                       name="firstName"/>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last name: </label>
-                <input type="text"
-                       class="form-control lastName" id="lastName"
-                       aria-describedby="lastName" value="${user.lastName}"
-                       name="lastName"/>
-            </div>
-            <div class="form-group">
-                <label for="age">Age: </label>
-                <input type="number"
-                       class="form-control age" id="age"
-                       aria-describedby="age"
-                       name="age" min="16" max="100" value="${user.age}"/>
-            </div>
-            <div class="form-group">
-                <label for="score">Certificate score: </label>
-                <input type="number" name="score" id="score" class="form-control score"
-                       id="capacity" aria-describedby="score"
-                       placeholder="Enter a certificate score" min="1"
-                       max="100"/>
-            </div>
-            <div class="form-group">
-                <abel for="schoolName">School name:</abel>
-                <input type="text"
-                       class="form-control schoolName" id="schoolName"
-                       aria-describedby="schoolName" placeholder="Enter a school name"
-                       name="schoolName"/>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg apply"
-                    id="apply">Apply
-            </button>
-        </form:form>
+        <h4>Hello: ${user.firstName}</h4>
+        <c:if test="${not empty statements}">
+            <h3 style="margin: 30px; text-align: center">Statements</h3>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Faculty name</th>
+                    <th scope="col">Entrant</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:set var="numb" scope="session" value="${0}"/>
+                <c:forEach items="${statements}" var="statement">
+                    <tr>
+                        <th scope="row"><c:out value="${numb = 1 + numb}"/></th>
+                        <td>${statement.faculty.name}</td>
+                        <td>${statement.name}</td>
+                        <td>${statement.score}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
+        <c:if test="${not empty successful_statements}">
+            <h3 style="margin: 30px; text-align: center">Statements of enrolled students</h3>
+            <table class="table table-dark" style="background-color: green">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Faculty name</th>
+                    <th scope="col">Entrant</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:set var="numb1" scope="session" value="${0}"/>
+                <c:forEach items="${successful_statements}" var="successful_statement">
+                    <tr>
+                        <th scope="row"><c:out value="${numb1 = 1 + numb1}"/></th>
+                        <td>${successful_statement.faculty.name}</td>
+                        <td>${successful_statement.name}</td>
+                        <td>${successful_statement.score}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 </div>
 

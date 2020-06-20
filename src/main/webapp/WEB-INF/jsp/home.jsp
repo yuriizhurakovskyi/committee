@@ -21,26 +21,11 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="#homeSubmenu"
-                                      data-toggle="collapse" aria-expanded="false"
-                                      class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li><a href="#">Home 1</a></li>
-                        <li><a href="#">Home 2</a></li>
-                        <li><a href="#">Home 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">About</a></li>
-                <li><a href="#pageSubmenu" data-toggle="collapse"
-                       aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+                <li class="active"><a href="home">Home</a></li>
+                <li><a href="createFaculty">Create Faculty</a></li>
+                <li><a href="home">Show all faculties</a></li>
+                <li><a href="showAllEntrants">Show all entrants</a></li>
+                <li><a href="showStatements">Statements</a></li>
             </ul>
 
             <div class="footer">
@@ -87,8 +72,10 @@
                             all faculties</a></li>
                         <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
                             all entrants</a></li>
+                        <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" style="cursor: pointer" onclick="document.getElementById('myForm').submit();">Logout</a>
+                            <a class="nav-link" style="cursor: pointer"
+                               onclick="document.getElementById('myForm').submit();">Logout</a>
                         </li>
 
                     </ul>
@@ -105,12 +92,12 @@
                             <h3>Faculty name: ${faculty.name}</h3>
                         </header>
                         <div class="w3-container">
-                            <p>Number of free places: ${faculty.numberOfStudents}</p>
+                            <p>Max number of candidates: ${faculty.maxNumberOfCandidates}</p>
                             <hr>
                             <img src="${pageContext.request.contextPath}/images/faculty.png"
                                  alt="Avatar" class="w3-left w3-circle w3-margin-right"
                                  style="width: 60px">
-                            <p>Number of free places: ${faculty.numberOfStudents}</p>
+                            <p>Number of free places: ${faculty.countOfStudents}</p>
                             <br>
                         </div>
                         <!-- ${faculty.id} -->
@@ -121,21 +108,6 @@
                 </c:forEach>
             </div>
         </c:if>
-        <h2 class="mb-4">Sidebar #01</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 </div>
 
