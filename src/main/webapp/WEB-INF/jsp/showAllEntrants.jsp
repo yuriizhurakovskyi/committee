@@ -95,7 +95,7 @@
                 </div>
             </div>
         </nav>
-        <h1>Hello: ${userLogged}</h1>
+        <h1>Hello: ${user.firstName}</h1>
         <c:if test="${not empty entrants}">
             <div class="w3-container">
                 <h3 style="margin: 30px; text-align: center" >All Entrants</h3>
@@ -105,6 +105,9 @@
                             <h3>Entrant name: ${entrant.firstName} ${entrant.lastName}</h3>
                         </header>
                         <div class="w3-container">
+                            <img src="data:image/jpg;base64, ${entrant.encodedImage}"
+                                 alt="Avatar" class="w3-left w3-circle w3-margin-right"
+                                 style="width: 240px; height: 250px">
                             <h3>Age: ${entrant.age}</h3>
                             <br>
                             <h3>School: ${entrant.schoolName}</h3>

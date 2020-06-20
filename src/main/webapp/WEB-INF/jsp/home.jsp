@@ -95,10 +95,10 @@
                 </div>
             </div>
         </nav>
-        <h1>Hello: ${userLogged}</h1>
+        <h4>Hello ${user.firstName}</h4>
         <c:if test="${not empty faculties}">
             <div class="w3-container">
-                <h2>All Faculties</h2>
+                <h2 style="text-align: center">All Faculties</h2>
                 <c:forEach items="${faculties}" var="faculty">
                     <div class="w3-card-4" style="width: 70%">
                         <header class="w3-container w3-light-grey">

@@ -59,7 +59,7 @@ public class UserController {
             model.addAttribute("userLogged", "ADMIN logged");
         } else {
             User userLogged = (User) userService.findUserByEmail(username);
-            model.addAttribute("userLogged", userLogged.getUsername());
+            model.addAttribute("user", userLogged);
         }
         return "home";
     }
@@ -69,7 +69,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("faculties", facultyService.getAllFaculties());
         System.out.println(facultyService.getAllFaculties());
-        modelAndView.addObject("userLogged", userService.findUserByEmail(principal.getName()).getUsername());
+        modelAndView.addObject("user", userService.findUserByEmail(principal.getName()));
         return modelAndView;
     }
 }

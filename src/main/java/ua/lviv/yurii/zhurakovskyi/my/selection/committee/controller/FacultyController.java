@@ -21,11 +21,14 @@ import java.security.Principal;
 public class FacultyController {
     @Autowired
     private FacultyService facultyService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/createFaculty")
     public String createFaculty(Model model, Principal principal) {
         model.addAttribute("faculty", new Faculty());
-        model.addAttribute("userLogged", principal.getName());
+        User user = userService.findUserByEmail(principal.getName());
+        model.addAttribute("user", user);
         return "/createFaculty";
     }
 

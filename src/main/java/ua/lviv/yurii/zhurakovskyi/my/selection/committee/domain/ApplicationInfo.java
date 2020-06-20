@@ -23,8 +23,28 @@ public class ApplicationInfo {
     private String lastName;
     @Column
     private Integer age;
+    @Lob
+    private byte[] imageFile;
+    @Lob
+    private String encodedImage;
 
     public ApplicationInfo() {
+    }
+
+    public String getEncodedImage() {
+        return encodedImage;
+    }
+
+    public void setEncodedImage(String encodedImage) {
+        this.encodedImage = encodedImage;
+    }
+
+    public byte[] getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(byte[] imageFile) {
+        this.imageFile = imageFile;
     }
 
     public String getFirstName() {

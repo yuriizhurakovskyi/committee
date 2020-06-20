@@ -20,7 +20,7 @@ public class EntrantController {
     public String welcome(Model model, Principal principal) {
         model.addAttribute("entrants", applicationInfoService.getAllApplicationInfos());
         System.out.println(applicationInfoService.getAllApplicationInfos());
-        model.addAttribute("userLogged", userService.findUserByEmail(principal.getName()).getFirstName());
+        model.addAttribute("user", userService.findUserByEmail(principal.getName()));
         return "showAllEntrants";
     }
 }

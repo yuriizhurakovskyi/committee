@@ -92,7 +92,7 @@
 					</div>
 				</div>
 			</nav>
-			<h1>Hello: ${userLogged}</h1>
+			<h1>Hello: ${user.firstName}</h1>
 			<h1>Create new Faculty</h1>
 			<form:form mathod="POST" action="${contextPath}/createFaculty"
 				modelAttribute="faculty">
