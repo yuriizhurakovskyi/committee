@@ -47,6 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
+                .antMatchers("/home").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/apply").access("hasRole('ROLE_USER')")
+                .antMatchers("/createFaculty").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/showAllEntrants").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/showAllStatements").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
