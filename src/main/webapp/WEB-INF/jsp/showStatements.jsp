@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <html lang="en">
 <head>
@@ -21,11 +22,17 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li><a href="home">Home</a></li>
-                <li><a href="createFaculty">Create Faculty</a></li>
-                <li><a href="home">Show all faculties</a></li>
-                <li><a href="showAllEntrants">Show all entrants</a></li>
-                <li class="active"><a href="showStatements">Statements</a></li>
+                <li class="active"><a href="home">Home</a></li>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <li><a href="createFaculty">Create Faculty</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <li><a href="home">Show all faculties</a></li>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <li><a href="showAllEntrants">Show all entrants</a></li>
+                </sec:authorize>
+                <li><a href="showStatements">Statements</a></li>
             </ul>
 
             <div class="footer">
@@ -66,18 +73,23 @@
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="home">Home</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link"
-                                                href="createFaculty">Create Faculty</a></li>
-                        <li class="nav-item"><a class="nav-link" href="home">Show
-                            all faculties</a></li>
-                        <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
-                            all entrants</a></li>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="createFaculty">Create Faculty</a></li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_USER')">
+                            <li class="nav-item"><a class="nav-link" href="home">Show
+                                all faculties</a></li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
+                                all entrants</a></li>
+                        </sec:authorize>
                         <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
                                onclick="document.getElementById('myForm').submit();">Logout</a>
                         </li>
-
                     </ul>
                 </div>
             </div>

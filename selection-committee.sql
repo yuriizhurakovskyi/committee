@@ -30,7 +30,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
-INSERT INTO `faculty` VALUES (1,10,28,'Foreign languages'),(2,1,17,'Mathematics');
+INSERT INTO `faculty` VALUES (1,10,25,'Foreign languages'),(2,1,17,'Mathematics');
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40,7 +40,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `statement` WRITE;
 /*!40000 ALTER TABLE `statement` DISABLE KEYS */;
-INSERT INTO `statement` VALUES (1,'Maria Bony',100,2),(2,'Mark Novak',89,2),(3,'Mark Novak',67,2),(4,'Katya Brown',96,1),(5,'Mark Novak',100,1);
+INSERT INTO `statement` VALUES (1,'Maria Bony',100,2),(2,'Mark Novak',89,2),(3,'Mark Novak',67,2),(4,'Katya Brown',96,1),(5,'Mark Novak',100,1),(6,'Olena Stepiv',98,1),(7,'Olena Stepiv',100,1),(8,'Olena Stepiv',100,1);
 /*!40000 ALTER TABLE `statement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,7 +50,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('user',1,_binary '',_binary '',19,_binary '','111@i.ua',_binary '','Mark','Novak','$2a$10$LX9NQQm47VEbJRLTmpOumexh7rPNMuYG5iP.tyFrIE00EBaX662GO','ROLE_USER');
+INSERT INTO `user` VALUES ('user',1,_binary '',_binary '',19,_binary '','111@i.ua',_binary '','Mark','Novak','$2a$10$LX9NQQm47VEbJRLTmpOumexh7rPNMuYG5iP.tyFrIE00EBaX662GO','ROLE_ADMIN'),('user',2,_binary '',_binary '',22,_binary '','Olena.Step@k.uk',_binary '','Olena','Stepiv','$2a$10$hvFvTcwxOXmm1a9vSuyjSeQGewJDK5jEkaRzqn8Ah7xUJIrqWghB2','ROLE_ADMIN');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,4 +71,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-21  0:31:56
+-- Dump completed on 2020-06-21 16:23:04
