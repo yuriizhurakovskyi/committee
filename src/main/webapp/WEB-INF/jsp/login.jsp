@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,13 +18,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/registration-form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let selectedItem = localStorage.getItem("locales");
+            $('#locales').val(selectedItem ? selectedItem : "en");
+            $('#locales').change(function () {
+                let selectedOption = $('#locales').val();
+                if (selectedOption) {
+                    window.location.replace('?lang=' + selectedOption);
+                    localStorage.setItem('locales', selectedOption);
+                }
+            })
+        });
+    </script>
 </head>
 <body>
-
+<div>
+    <fieldset>
+        <legend>
+            <spring:message code="login.welcome"></spring:message>
+            <p>
+                <label><spring:message code="login.choose_language"></spring:message></label>
+                <select id="locales">
+                    <option value="en">English</option>
+                    <option value="uk">Ukrainian</option>
+                </select>
+            </p>
+        </legend>
+    </fieldset>
+</div>
 <form name="f" action="<c:url value='/login' />" method="POST" class="well form-horizontal" id="contact_form">
     <fieldset>
         <legend>
-            <center><h2><b>Login</b></h2></center>
+            <center><h2><b><spring:message code="login.title"/></b></h2></center>
         </legend>
         <br>
         <div>
@@ -33,7 +60,8 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input name="username" placeholder="E-Mail Address" class="form-control" type="text">
+                        <input name="username" placeholder="<spring:message code="login.email"/>" class="form-control"
+                               type="text">
                     </div>
                 </div>
             </div>
@@ -42,7 +70,8 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="password" placeholder="Password" class="form-control" type="password">
+                        <input name="password" placeholder="<spring:message code="login.password"/>"
+                               class="form-control" type="password">
                     </div>
                 </div>
             </div>
@@ -51,7 +80,8 @@
                 <div class="col-md-4">
                     <br>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
+                    <button type="submit" class="btn btn-warning">
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<spring:message code="login.signIn"/>" <span
                             class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </button>
                 </div>
@@ -66,7 +96,7 @@
         </div>
         <input type="hidden" name="${_csrf.parameterName }"
                value="${_csrf.token }">
-        <div style="text-align: center">Don't have an account? <a href="register">Sign Up</a>
+        <div style="text-align: center">Don't have an account? <a href="register"><spring:message code="login.create-account"/>"</a>
         </div>
     </fieldset>
 </form>

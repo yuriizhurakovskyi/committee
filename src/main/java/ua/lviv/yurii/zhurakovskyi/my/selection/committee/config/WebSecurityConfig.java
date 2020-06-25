@@ -72,8 +72,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth, AuthenticationProvider provider) throws Exception {
         inMemoryConfigurer().withUser("admin").password("{noop}admin").authorities("ADMIN").and().configure(auth);
         auth.authenticationProvider(provider);
-
     }
-
-
 }
