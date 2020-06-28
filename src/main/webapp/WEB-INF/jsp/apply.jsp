@@ -5,7 +5,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <head>
-    <title>Applying for faculty place</title>
+    <title><spring:message code="apply.applyingForFacultyPlace"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link
@@ -21,17 +21,17 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="home">Home</a></li>
+                <li class="active"><a href="home"><spring:message code="menu.home"/></a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="createFaculty">Create Faculty</a></li>
+                    <li><a href="createFaculty"><spring:message code="menu.createFaculty"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <li><a href="home">Show all faculties</a></li>
+                    <li><a href="home"><spring:message code="menu.showAllFaculties"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="showAllEntrants">Show all entrants</a></li>
+                    <li><a href="showAllEntrants"><spring:message code="menu.showAllEntrants"/></a></li>
                 </sec:authorize>
-                <li><a href="showStatements">Statements</a></li>
+                <li><a href="showStatements"><spring:message code="menu.showStatements"/></a></li>
             </ul>
 
             <div class="footer">
@@ -71,76 +71,74 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="home">Home</a>
+                        <li class="nav-item active"><a class="nav-link" href="home"><spring:message code="menu.home"/></a>
                         </li>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="createFaculty">Create Faculty</a></li>
+                                                    href="createFaculty"><spring:message code="menu.createFaculty"/></a></li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_USER')">
-                            <li class="nav-item"><a class="nav-link" href="home">Show
-                                all faculties</a></li>
+                            <li class="nav-item"><a class="nav-link" href="home"><spring:message code="menu.showAllFaculties"/></a></li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
-                                all entrants</a></li>
+                            <li class="nav-item"><a class="nav-link" href="showAllEntrants"><spring:message code="menu.showAllEntrants"/></a></li>
                         </sec:authorize>
-                        <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="showStatements"><spring:message code="menu.showStatements"/></a></li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
-                               onclick="document.getElementById('myForm').submit();">Logout</a>
+                               onclick="document.getElementById('myForm').submit();"><spring:message code="menu.logout"/></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h4>Hello ${user.firstName}</h4>
-        <h2 style="text-align: center">Applying for faculty place</h2>
-        <h2 class="mb-4">Faculty name: ${faculty.name}</h2>
+        <h4><spring:message code="page.hello"/> ${user.firstName}</h4>
+        <h2 style="text-align: center"><spring:message code="apply.applyingForFacultyPlace"/></h2>
+        <h2 class="mb-4"><spring:message code="apply.facultyName"/> ${faculty.name}</h2>
         <form:form method="POST" action="${contextPath}/apply/${faculty.id}" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="image">Select an image: </label>
+                <label for="image"><spring:message code="apply.selectAnImage"/> </label>
                 <input type="file" id="image"
                        aria-describedby="image"
                        name="image"/>
             </div>
             <div class="form-group">
-                <label for="firstName">First name: </label>
+                <label for="firstName"><spring:message code="apply.firstName"/> </label>
                 <input type="text"
                        class="form-control firstName" id="firstName"
                        aria-describedby="firstName" value="${user.firstName}"
                        name="firstName"/>
             </div>
             <div class="form-group">
-                <label for="lastName">Last name: </label>
+                <label for="lastName"><spring:message code="apply.lastName"/> </label>
                 <input type="text"
                        class="form-control lastName" id="lastName"
                        aria-describedby="lastName" value="${user.lastName}"
                        name="lastName"/>
             </div>
             <div class="form-group">
-                <label for="age">Age: </label>
+                <label for="age"><spring:message code="apply.age"/> </label>
                 <input type="number"
                        class="form-control age" id="age"
                        aria-describedby="age"
                        name="age" min="16" max="100" value="${user.age}"/>
             </div>
             <div class="form-group">
-                <label for="score">Certificate score: </label>
+                <label for="score"><spring:message code="apply.certificateScore"/> </label>
                 <input type="number" name="score" id="score" class="form-control score"
                        id="capacity" aria-describedby="score"
                        placeholder="Enter a certificate score" min="1"
                        max="100"/>
             </div>
             <div class="form-group">
-                <label for="schoolName">School name:</label>
+                <label for="schoolName"><spring:message code="apply.schoolName"/></label>
                 <input type="text"
                        class="form-control schoolName" id="schoolName"
                        aria-describedby="schoolName" placeholder="Enter a school name"
                        name="schoolName"/>
             </div>
             <button type="submit" class="btn btn-primary btn-lg apply"
-                    id="apply">Apply
+                    id="apply"><spring:message code="apply.Apply"/>
             </button>
         </form:form>
     </div>

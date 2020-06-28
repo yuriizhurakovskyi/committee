@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration</title>
+    <title><spring:message code="register.title"/></title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -24,11 +24,11 @@
     <form action="<c:url value="/register"/>" class="well form-horizontal" method="POST" id="contact_form">
         <fieldset>
             <legend>
-                <center><h2><b>Create account</b></h2></center>
+                <center><h2><b><spring:message code="register.createAccount"/></b></h2></center>
             </legend>
             <br>
             <div class="form-group">
-                <label class="col-md-4 control-label">First Name</label>
+                <label class="col-md-4 control-label"><spring:message code="register.firstName"/></label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">Last Name</label>
+                <label class="col-md-4 control-label"><spring:message code="register.lastName"/></label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">E-Mail</label>
+                <label class="col-md-4 control-label"><spring:message code="register.email"/></label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">Age</label>
+                <label class="col-md-4 control-label"><spring:message code="register.age"/></label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">Password</label>
+                <label class="col-md-4 control-label"><spring:message code="register.password"/></label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">Confirm Password</label>
+                <label class="col-md-4 control-label"><spring:message code="register.confirmPassword"/></label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -98,8 +98,8 @@
                     </button>
                 </div>
             </div>
-            <div style="text-align: center">Already registered?
-                <a href="${pageContext.request.contextPath}/login">Log in</a>
+            <div style="text-align: center"><spring:message code="register.alreadyRegistered"/>
+                <a href="${pageContext.request.contextPath}/login"><spring:message code="register.logIn"/></a>
             </div>
 
         </fieldset>

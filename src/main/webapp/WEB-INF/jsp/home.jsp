@@ -6,7 +6,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html lang="en">
 <head>
-    <title>Welcome page</title>
+    <title><spring:message code="home.title"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link
@@ -22,17 +22,17 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="home">Home</a></li>
+                <li class="active"><a href="home"><spring:message code="menu.home"/></a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="createFaculty">Create Faculty</a></li>
+                    <li><a href="createFaculty"><spring:message code="menu.createFaculty"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <li><a href="home">Show all faculties</a></li>
+                    <li><a href="home"><spring:message code="menu.showAllFaculties"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="showAllEntrants">Show all entrants</a></li>
+                    <li><a href="showAllEntrants"><spring:message code="menu.showAllEntrants"/></a></li>
                 </sec:authorize>
-                <li><a href="showStatements">Statements</a></li>
+                <li><a href="showStatements"><spring:message code="menu.showStatements"/></a></li>
             </ul>
 
             <div class="footer">
@@ -71,49 +71,47 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="home">Home</a>
+                        <li class="nav-item active"><a class="nav-link" href="home"><spring:message code="menu.home"/></a>
                         </li>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="createFaculty">Create Faculty</a></li>
+                                                    href="createFaculty"><spring:message code="menu.createFaculty"/></a></li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_USER')">
-                            <li class="nav-item"><a class="nav-link" href="home">Show
-                                all faculties</a></li>
+                            <li class="nav-item"><a class="nav-link" href="home"><spring:message code="menu.showAllFaculties"/></a></li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
-                                all entrants</a></li>
+                            <li class="nav-item"><a class="nav-link" href="showAllEntrants"><spring:message code="menu.showAllEntrants"/></a></li>
                         </sec:authorize>
-                        <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="showStatements"><spring:message code="menu.showStatements"/></a></li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
-                               onclick="document.getElementById('myForm').submit();">Logout</a>
+                               onclick="document.getElementById('myForm').submit();"><spring:message code="menu.logout"/></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h4>Hello ${user.firstName}</h4>
+        <h4><spring:message code="page.hello"/> ${user.firstName}</h4>
         <c:if test="${not empty faculties}">
             <div class="w3-container">
-                <h2 style="text-align: center">All Faculties</h2>
+                <h2 style="text-align: center"><spring:message code="home.AllFaculties"/></h2>
                 <c:forEach items="${faculties}" var="faculty">
                     <div class="w3-card-4" style="width: 70%">
                         <header class="w3-container w3-light-grey">
-                            <h3>Faculty name: ${faculty.name}</h3>
+                            <h3><spring:message code="home.facultyName"/> ${faculty.name}</h3>
                         </header>
                         <div class="w3-container">
-                            <p>Max number of candidates: ${faculty.maxNumberOfCandidates}</p>
+                            <p><spring:message code="home.maxNumberOfCandidates"/> ${faculty.maxNumberOfCandidates}</p>
                             <hr>
                             <img src="${pageContext.request.contextPath}/images/faculty.png"
                                  alt="Avatar" class="w3-left w3-circle w3-margin-right"
                                  style="width: 60px">
-                            <p>Number of free places: ${faculty.countOfStudents}</p>
+                            <p><spring:message code="home.numberOfFreePlaces"/> ${faculty.countOfStudents}</p>
                             <br>
                         </div>
                         <!-- ${faculty.id} -->
-                        <a href="/apply/${faculty.id}" class="w3-button w3-block w3-dark-grey">Apply</a>
+                        <a href="/apply/${faculty.id}" class="w3-button w3-block w3-dark-grey"><spring:message code="home.apply"/></a>
                     </div>
                     <br>
                     <br>

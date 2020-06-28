@@ -6,7 +6,7 @@
 <%@ page isELIgnored="false" %>
 <html lang="en">
 <head>
-    <title>Manager Statement</title>
+    <title><spring:message code="showStatements.title"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link
@@ -22,17 +22,17 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="home">Home</a></li>
+                <li class="active"><a href="home"><spring:message code="menu.home"/></a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="createFaculty">Create Faculty</a></li>
+                    <li><a href="createFaculty"><spring:message code="menu.createFaculty"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <li><a href="home">Show all faculties</a></li>
+                    <li><a href="home"><spring:message code="menu.showAllFaculties"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="showAllEntrants">Show all entrants</a></li>
+                    <li><a href="showAllEntrants"><spring:message code="menu.showAllEntrants"/></a></li>
                 </sec:authorize>
-                <li><a href="showStatements">Statements</a></li>
+                <li><a href="showStatements"><spring:message code="menu.showStatements"/></a></li>
             </ul>
 
             <div class="footer">
@@ -71,39 +71,43 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="home">Home</a>
+                        <li class="nav-item active"><a class="nav-link" href="home"><spring:message
+                                code="menu.home"/></a>
                         </li>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="createFaculty">Create Faculty</a></li>
+                                                    href="createFaculty"><spring:message code="menu.createFaculty"/></a>
+                            </li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_USER')">
-                            <li class="nav-item"><a class="nav-link" href="home">Show
-                                all faculties</a></li>
+                            <li class="nav-item"><a class="nav-link" href="home"><spring:message
+                                    code="menu.showAllFaculties"/></a></li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
-                                all entrants</a></li>
+                            <li class="nav-item"><a class="nav-link" href="showAllEntrants"><spring:message
+                                    code="menu.showAllEntrants"/></a></li>
                         </sec:authorize>
-                        <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="showStatements"><spring:message
+                                code="menu.showStatements"/></a></li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
-                               onclick="document.getElementById('myForm').submit();">Logout</a>
+                               onclick="document.getElementById('myForm').submit();"><spring:message
+                                    code="menu.logout"/></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h4>Hello: ${user.firstName}</h4>
+        <h4><spring:message code="page.hello"/>: ${user.firstName}</h4>
         <c:if test="${not empty statements}">
-            <h3 style="margin: 30px; text-align: center">Statements</h3>
+            <h3 style="margin: 30px; text-align: center"><spring:message code="showStatements.statements"/></h3>
             <table class="table table-dark">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Faculty name</th>
-                    <th scope="col">Entrant</th>
-                    <th scope="col">Score</th>
+                    <th scope="col"><spring:message code="showStatements.facultyName"/></th>
+                    <th scope="col"><spring:message code="showStatements.entrant"/></th>
+                    <th scope="col"><spring:message code="showStatements.score"/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -120,14 +124,14 @@
             </table>
         </c:if>
         <c:if test="${not empty successful_statements}">
-            <h3 style="margin: 30px; text-align: center">Statements of enrolled students</h3>
+            <h3 style="margin: 30px; text-align: center"><spring:message code="showStatements.statementsOfEnrolledStudents"/></h3>
             <table class="table table-dark" style="background-color: green">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Faculty name</th>
-                    <th scope="col">Entrant</th>
-                    <th scope="col">Score</th>
+                    <th scope="col"><spring:message code="showStatements.facultyName"/></th>
+                    <th scope="col"><spring:message code="showStatements.entrant"/></th>
+                    <th scope="col"><spring:message code="showStatements.score"/></th>
                 </tr>
                 </thead>
                 <tbody>

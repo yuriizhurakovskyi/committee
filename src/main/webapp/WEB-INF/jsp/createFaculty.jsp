@@ -5,7 +5,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
-    <title>Welcome page</title>
+    <title><spring:message code="createFaculty.title"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link
@@ -21,17 +21,17 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="home">Home</a></li>
+                <li class="active"><a href="home"><spring:message code="menu.home"/></a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="createFaculty">Create Faculty</a></li>
+                    <li><a href="createFaculty"><spring:message code="menu.createFaculty"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <li><a href="home">Show all faculties</a></li>
+                    <li><a href="home"><spring:message code="menu.showAllFaculties"/></a></li>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="showAllEntrants">Show all entrants</a></li>
+                    <li><a href="showAllEntrants"><spring:message code="menu.showAllEntrants"/></a></li>
                 </sec:authorize>
-                <li><a href="showStatements">Statements</a></li>
+                <li><a href="showStatements"><spring:message code="menu.showStatements"/></a></li>
             </ul>
 
             <div class="footer">
@@ -71,53 +71,57 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="home">Home</a>
+                        <li class="nav-item active"><a class="nav-link" href="home"><spring:message
+                                code="menu.home"/></a>
                         </li>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="createFaculty">Create Faculty</a></li>
+                                                    href="createFaculty"><spring:message code="menu.createFaculty"/></a>
+                            </li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_USER')">
-                            <li class="nav-item"><a class="nav-link" href="home">Show
-                                all faculties</a></li>
+                            <li class="nav-item"><a class="nav-link" href="home"><spring:message
+                                    code="menu.showAllFaculties"/></a></li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="nav-item"><a class="nav-link" href="showAllEntrants">Show
-                                all entrants</a></li>
+                            <li class="nav-item"><a class="nav-link" href="showAllEntrants"><spring:message
+                                    code="menu.showAllEntrants"/></a></li>
                         </sec:authorize>
-                        <li class="nav-item"><a class="nav-link" href="showStatements">Statements</a></li>
+                        <li class="nav-item"><a class="nav-link" href="showStatements"><spring:message
+                                code="menu.showStatements"/></a></li>
                         <li class="nav-item">
                             <a class="nav-link" style="cursor: pointer"
-                               onclick="document.getElementById('myForm').submit();">Logout</a>
+                               onclick="document.getElementById('myForm').submit();"><spring:message
+                                    code="menu.logout"/></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h1>Hello: ${user.firstName}</h1>
+        <h1><spring:message code="page.hello"/>: ${user.firstName}</h1>
         <h1>Create new Faculty</h1>
         <form:form mathod="POST" action="${contextPath}/createFaculty"
                    modelAttribute="faculty">
             <div class="form-group">
-                <form:label for="name" path="name">Name of Faculty</form:label>
+                <form:label for="name" path="name"><spring:message code="createFaculty.nameOfFaculty"/></form:label>
                 <form:input type="text" path="name" class="form-control" id="name"
                             placeholder="Name of Faculty"/>
             </div>
             <div class="form-group">
                 <form:label for="exampleFormControlInput1"
-                            path="maxNumberOfCandidates">Max number of candidates</form:label>
+                            path="maxNumberOfCandidates"><spring:message code="createFaculty.maxNumberOfCandidates"/></form:label>
                 <form:input type="number" min="20" max="200" class="form-control"
                             id="maxNumberOfCandidates" path="maxNumberOfCandidates"
                             placeholder=""/>
             </div>
             <div class="form-group">
                 <form:label for="exampleFormControlInput1"
-                            path="countOfStudents">Count of students</form:label>
+                            path="countOfStudents"><spring:message code="createFaculty.countOfStudents"/></form:label>
                 <form:input type="number" min="1" max="20" class="form-control"
                             id="countOfStudents" path="countOfStudents"
                             placeholder=""/>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary"><spring:message code="createFaculty.create"/></button>
         </form:form>
     </div>
 </div>
