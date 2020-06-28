@@ -41,8 +41,8 @@
             <p>
                 <label><spring:message code="login.choose_language"></spring:message></label>
                 <select id="locales">
-                    <option value="en">English</option>
-                    <option value="uk">Ukrainian</option>
+                    <option value="en"><spring:message code="login.english"/></option>
+                    <option value="uk"><spring:message code="login.ukrainian"/></option>
                 </select>
             </p>
         </legend>
@@ -96,7 +96,8 @@
         </div>
         <input type="hidden" name="${_csrf.parameterName }"
                value="${_csrf.token }">
-        <div style="text-align: center">Don't have an account? <a href="register"><spring:message code="login.create-account"/>"</a>
+        <div style="text-align: center">Don't have an account? <a href="register"><spring:message
+                code="login.signUp"/>"</a>
         </div>
     </fieldset>
 </form>

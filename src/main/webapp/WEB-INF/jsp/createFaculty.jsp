@@ -99,7 +99,7 @@
             </div>
         </nav>
         <h1><spring:message code="page.hello"/>: ${user.firstName}</h1>
-        <h1>Create new Faculty</h1>
+        <h1><spring:message code="createFaculty.createNewFaculty"/></h1>
         <form:form mathod="POST" action="${contextPath}/createFaculty"
                    modelAttribute="faculty">
             <div class="form-group">
@@ -109,7 +109,8 @@
             </div>
             <div class="form-group">
                 <form:label for="exampleFormControlInput1"
-                            path="maxNumberOfCandidates"><spring:message code="createFaculty.maxNumberOfCandidates"/></form:label>
+                            path="maxNumberOfCandidates"><spring:message
+                        code="createFaculty.maxNumberOfCandidates"/></form:label>
                 <form:input type="number" min="20" max="200" class="form-control"
                             id="maxNumberOfCandidates" path="maxNumberOfCandidates"
                             placeholder=""/>
