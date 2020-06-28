@@ -117,7 +117,7 @@
                             id="countOfStudents" path="countOfStudents"
                             placeholder=""/>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form:form>
     </div>
 </div>

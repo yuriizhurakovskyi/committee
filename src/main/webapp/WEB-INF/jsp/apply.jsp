@@ -133,7 +133,7 @@
                        max="100"/>
             </div>
             <div class="form-group">
-                <abel for="schoolName">School name:</abel>
+                <label for="schoolName">School name:</label>
                 <input type="text"
                        class="form-control schoolName" id="schoolName"
                        aria-describedby="schoolName" placeholder="Enter a school name"
