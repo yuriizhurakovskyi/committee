@@ -65,20 +65,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jasper</artifactId>
             <version>9.0.35</version>
         </dependency>
-        <!--		<dependency>-->
-        <!--			<groupId>org.apache.tomcat.embed</groupId>-->
-        <!--			<artifactId>tomcat-embed-jasper</artifactId>-->
-        <!--			<version>10.0.0-M6</version>-->
-        <!--		</dependency>-->
-        <!--		<dependency>-->
-        <!--			<groupId>org.apache.tomcat.embed</groupId>-->
-        <!--			<artifactId>tomcat-embed-core</artifactId>-->
-        <!--			<version>10.0.0-M6</version>-->
-        <!--		</dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
