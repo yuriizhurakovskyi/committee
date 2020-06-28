@@ -1,4 +1,4 @@
-package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service;
+package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

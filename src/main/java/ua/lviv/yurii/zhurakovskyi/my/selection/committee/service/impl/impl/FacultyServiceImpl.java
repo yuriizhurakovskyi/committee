@@ -1,4 +1,4 @@
-package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
+package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.dao.FacultyRepository;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.FacultyService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.FacultyService;
 
 import java.util.List;
 import java.util.Optional;

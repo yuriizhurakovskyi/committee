@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ApplicationInfo;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ManagerStatement;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ManagerStatementService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ApplicationInfoService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ManagerStatementService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.UserService;
 
 import java.security.Principal;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;

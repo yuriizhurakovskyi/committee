@@ -11,10 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ApplicationInfo;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.User;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoDTOHelper;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.FacultyService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ApplicationInfoDTOHelper;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ApplicationInfoService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.FacultyService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.UserService;
 
 import java.io.IOException;
 import java.security.Principal;

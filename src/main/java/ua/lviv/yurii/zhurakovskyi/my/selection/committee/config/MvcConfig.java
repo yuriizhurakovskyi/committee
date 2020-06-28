@@ -34,7 +34,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("/jsp/", ".jsp");
+        registry.jsp("/WEB-INF/jsp/", ".jsp");
     }
 
     @Bean

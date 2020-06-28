@@ -1,4 +1,4 @@
-package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
+package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.dao.ManagerStatementRepository;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ManagerStatement;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ManagerStatementService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ManagerStatementService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ManagerStatementImpl implements ManagerStatementService {
-    private Logger logger = LoggerFactory.getLogger(ManagerStatementImpl.class);
+public class ManagerStatementServiceImpl implements ManagerStatementService {
+    private Logger logger = LoggerFactory.getLogger(ManagerStatementServiceImpl.class);
     private final ManagerStatementRepository repository;
 
     @Autowired
-    public ManagerStatementImpl(ManagerStatementRepository repository) {
+    public ManagerStatementServiceImpl(ManagerStatementRepository repository) {
         this.repository = repository;
     }
 

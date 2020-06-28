@@ -1,4 +1,4 @@
-package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service;
+package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
 
 import org.springframework.web.multipart.MultipartFile;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ApplicationInfo;

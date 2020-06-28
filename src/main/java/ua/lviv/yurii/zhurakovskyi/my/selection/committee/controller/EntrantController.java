@@ -3,10 +3,9 @@ package ua.lviv.yurii.zhurakovskyi.my.selection.committee.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ApplicationInfoService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.UserService;
 
 import java.security.Principal;
 

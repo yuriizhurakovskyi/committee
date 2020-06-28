@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.User;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.FacultyService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.UserServiceImpl;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.FacultyService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.UserService;
 
-import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller

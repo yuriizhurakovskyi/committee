@@ -1,4 +1,4 @@
-package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
+package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.impl;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.dao.ApplicationInfoRepository;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ApplicationInfo;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.ApplicationInfoService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.ApplicationInfoService;
 
 @Service
 public class ApplicationInfoServiceImpl implements ApplicationInfoService {

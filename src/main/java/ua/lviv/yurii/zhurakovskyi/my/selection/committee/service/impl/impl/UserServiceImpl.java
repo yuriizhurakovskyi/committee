@@ -1,4 +1,4 @@
-package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
+package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.dao.UserRepository;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.User;
-import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.UserService;
+import ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl.UserService;
 
 import java.util.NoSuchElementException;
 
