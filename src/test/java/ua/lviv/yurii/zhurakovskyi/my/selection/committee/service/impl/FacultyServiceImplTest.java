@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.dao.FacultyRepository;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.Faculty;
@@ -18,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ua.lviv.yurii.zhurakovskyi.my.selection.committee.ModelUtils.getFaculty;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
-@AutoConfigureTestDatabase
+@SpringBootTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class FacultyServiceImplTest {
 
     @Autowired
