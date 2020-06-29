@@ -61,22 +61,21 @@ public class ManagerStatement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ManagerStatement that = (ManagerStatement) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(faculty, that.faculty) &&
+        return Objects.equals(faculty, that.faculty) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(score, that.score);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, faculty, name, score);
+        return Objects.hash(faculty, name, score);
     }
 
     @Override
     public String toString() {
         return "ManagerStatement{" +
                 "id=" + id +
-                ", faculty=" + faculty +
+                ", faculty=" + faculty.getName() +
                 ", name='" + name + '\'' +
                 ", score=" + score +
                 '}';

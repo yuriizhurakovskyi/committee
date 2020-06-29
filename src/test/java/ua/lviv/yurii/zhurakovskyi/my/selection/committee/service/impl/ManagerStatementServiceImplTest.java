@@ -1,10 +1,11 @@
 package ua.lviv.yurii.zhurakovskyi.my.selection.committee.service.impl;
 
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.dao.ManagerStatementRepository;
 import ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain.ManagerStatement;
@@ -18,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ua.lviv.yurii.zhurakovskyi.my.selection.committee.ModelUtils.getManagerStatement;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
-@AutoConfigureTestDatabase
+@SpringBootTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ManagerStatementServiceImplTest {
 
     @Autowired
@@ -30,6 +31,7 @@ public class ManagerStatementServiceImplTest {
 
     @Test
     void saveTest() {
+        managerStatementRepository.deleteAll();
         List<ManagerStatement> managerStatements = managerStatementRepository.findAll();
         assertThat(managerStatements, hasSize(0));
         ManagerStatement managerStatement = getManagerStatement();
@@ -37,11 +39,14 @@ public class ManagerStatementServiceImplTest {
         managerStatements = managerStatementRepository.findAll();
         assertThat(managerStatements, hasSize(1));
         ManagerStatement managerStatementFromDB = managerStatements.get(0);
-        assertEquals(managerStatement, managerStatementFromDB);
+        assertEquals(managerStatement.getName(), managerStatementFromDB.getName());
+        assertEquals(managerStatement.getScore(), managerStatementFromDB.getScore());
+        assertEquals(managerStatement.getFacultyName(), managerStatementFromDB.getFacultyName());
     }
 
     @Test
     void getAllManagerStatements() {
+        managerStatementRepository.deleteAll();
         List<ManagerStatement> managerStatements = managerStatementRepository.findAll();
         assertThat(managerStatements, hasSize(0));
         ManagerStatement managerStatement = getManagerStatement();

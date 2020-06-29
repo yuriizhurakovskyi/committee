@@ -2,6 +2,7 @@ package ua.lviv.yurii.zhurakovskyi.my.selection.committee.domain;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "faculty")
@@ -85,40 +86,18 @@ public class Faculty {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((maxNumberOfCandidates == null) ? 0 : maxNumberOfCandidates.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Faculty faculty = (Faculty) o;
+        return Objects.equals(name, faculty.name) &&
+                Objects.equals(maxNumberOfCandidates, faculty.maxNumberOfCandidates) &&
+                Objects.equals(countOfStudents, faculty.countOfStudents);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Faculty other = (Faculty) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (maxNumberOfCandidates == null) {
-            if (other.maxNumberOfCandidates != null)
-                return false;
-        } else if (!maxNumberOfCandidates.equals(other.maxNumberOfCandidates))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(name, maxNumberOfCandidates, countOfStudents);
     }
 
     @Override
