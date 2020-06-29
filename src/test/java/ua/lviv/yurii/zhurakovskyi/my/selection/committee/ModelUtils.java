@@ -37,6 +37,7 @@ public class ModelUtils {
         faculty.setName("FacultyName");
         faculty.setCountOfStudents(100);
         faculty.setMaxNumberOfCandidates(1000);
+        faculty.setId(1);
         return faculty;
     }
 
